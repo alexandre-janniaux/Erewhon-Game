@@ -49,6 +49,16 @@ namespace ewn
 		m_rememberCheckbox->UpdateText(Nz::SimpleTextDrawer::Draw("Remember me", 24));
 		m_rememberCheckbox->ResizeToContent();
 
+		m_serverAddrLabel = m_stateData.canvas->Add<Ndk::LabelWidget>();
+		m_serverAddrLabel->UpdateText(Nz::SimpleTextDrawer::Draw("Server :", 24));
+		m_serverAddrLabel->ResizeToContent();
+
+		m_serverAddrArea = m_stateData.canvas->Add<Ndk::TextAreaWidget>();
+		m_serverAddrArea->EnableBackground(true);
+		m_serverAddrArea->SetBackgroundColor(Nz::Color::White);
+		m_serverAddrArea->SetSize({ 200.f, 36.f});
+		m_serverAddrArea->SetTextColor(Nz::Color::Black);
+
 		m_connectionButton = m_stateData.canvas->Add<Ndk::ButtonWidget>();
 		m_connectionButton->UpdateText(Nz::SimpleTextDrawer::Draw("Connection", 24));
 		m_connectionButton->ResizeToContent();
@@ -97,6 +107,7 @@ namespace ewn
 		m_passwordArea->Destroy();
 		m_rememberCheckbox->Destroy();
 		m_statusLabel->Destroy();
+		m_serverAddrArea->Destroy();
 		m_onLoginFailureSlot.Disconnect();
 		m_onLoginSuccess.Disconnect();
 	}
@@ -170,6 +181,13 @@ namespace ewn
 		m_rememberCheckbox->SetPosition({ 0.f, cursor.y, 0.f });
 		m_rememberCheckbox->CenterHorizontal();
 		cursor.y += m_rememberCheckbox->GetSize().y + padding;
+
+		m_serverAddrArea->SetPosition({ 0.f, cursor.y, 0.f });
+		m_serverAddrArea->CenterHorizontal();
+		cursor.y += m_serverAddrArea->GetSize().y + padding;
+
+		m_serverAddrLabel->SetPosition(m_serverAddrArea->GetPosition() - Nz::Vector2f(m_serverAddrLabel->GetSize().x, 0.f));
+		cursor.y += m_serverAddrLabel->GetSize().y + padding;
 
 		m_connectionButton->SetPosition({ 0.f, cursor.y, 0.f });
 		m_connectionButton->CenterHorizontal();

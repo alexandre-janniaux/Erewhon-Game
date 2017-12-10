@@ -38,9 +38,11 @@ namespace ewn
 			Ndk::CheckboxWidget* m_rememberCheckbox;
 			Ndk::LabelWidget* m_loginLabel;
 			Ndk::LabelWidget* m_passwordLabel;
+			Ndk::LabelWidget* m_serverAddrLabel;
 			Ndk::LabelWidget* m_statusLabel;
 			Ndk::TextAreaWidget* m_loginArea;
 			Ndk::TextAreaWidget* m_passwordArea;
+			Ndk::TextAreaWidget* m_serverAddrArea;
 			bool m_loginSucceeded;
 			float m_loginAccumulator;
 	};
